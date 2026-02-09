@@ -1,0 +1,161 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "思源黑体", "Microsoft YaHei", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+/* 封面 */
+.cover {
+  position: fixed;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1519741497674-2816a88d0a8b?auto=format&fit=crop&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+  z-index: 10;
+}
+
+.cover.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.cover-content {
+  text-align: center;
+  padding: 40px;
+  background: rgba(0,0,0,0.45);
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  max-width: 90%;
+}
+
+.cover h1 {
+  font-size: 3.2rem;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.cover p {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+.enter-btn {
+  padding: 16px 48px;
+  font-size: 1.4rem;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(255,107,107,0.45);
+  transition: all 0.4s;
+}
+
+.enter-btn:hover {
+  transform: translateY(-4px) scale(1.06);
+  background: #ff4757;
+  box-shadow: 0 12px 40px rgba(255,71,87,0.55);
+}
+
+/* 主页面 */
+.main {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 1.5s ease 0.3s;
+}
+
+.main.show {
+  opacity: 1;
+}
+
+.poem-container {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 40px;
+  max-width: 90%;
+  min-width: 320px;
+}
+
+.poem {
+  font-size: 2.1rem;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  min-height: 180px;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s ease;
+}
+
+.poem.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.next-btn {
+  padding: 14px 42px;
+  font-size: 1.3rem;
+  background: rgba(255,255,255,0.18);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 50px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s;
+}
+
+.next-btn:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-3px);
+}
+
+/* 背景漂浮形状 */
+.bg-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  backdrop-filter: blur(2px);
+  animation: float 25s infinite ease-in-out;
+}
+
+.shape1 { width: 320px; height: 320px; top: 10%; left: -10%; animation-delay: 0s; }
+.shape2 { width: 420px; height: 420px; bottom: 15%; right: -15%; animation-delay: 8s; }
+.shape3 { width: 280px; height: 280px; top: 55%; right: 5%; animation-delay: 15s; }
+
+@keyframes float {
+  0%,100%   { transform: translate(0,0) rotate(0deg); }
+  25%       { transform: translate(120px,80px) rotate(30deg); }
+  50%       { transform: translate(40px,160px) rotate(60deg); }
+  75%       { transform: translate(-80px,60px) rotate(90deg); }
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .cover h1 { font-size: 2.4rem; }
+  .poem { font-size: 1.7rem; }
+}
