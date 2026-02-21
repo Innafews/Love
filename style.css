@@ -224,12 +224,18 @@ h1 {
         transform: translateY(-4px);
     }
 
+/* 去掉原来的 ::after 部分 */
+
 .poem.typing::after {
     content: '|';
     animation: blink 0.8s step-end infinite;
     color: #d0b0ff;
-    margin-left: 3px; /* 稍微拉开一点距离，更像真的光标 */
-    vertical-align: baseline; /* 避免位置偏移 */
+    margin-left: 3px;
+    vertical-align: baseline;
+    /* 下面三行是关键：强制硬件加速 + 告诉浏览器不要忽略 */
+    transform: translateZ(0); /* 或 translate3d(0,0,0) */
+    will-change: opacity, transform;
+    backface-visibility: hidden;
 }
 
 @keyframes blink {
