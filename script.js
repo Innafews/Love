@@ -26,22 +26,21 @@
     "你今天没出现，<br>我的整个世界就卡帧了。",
     "心动是你的形状，<br>失控是你的味道。",
     "你笑得太好看，<br>害我余生都想当小偷。",
-    // 以下为2025-2026流行/新风格补充（可继续增删）
-    "你出现时，心动就有了定义。",
-    "初见乍欢，久处仍怦然。",
-    "这次我们都带着真诚，慢慢来吧。",
-    "我会毫不犹豫地奔向你，这次，每次，次次。",
+    "你出现时，<br>心动就有了定义。",
+    "初见乍欢，<br>久处仍怦然。",
+    "这次我们都带着真诚，<br>慢慢来吧。",
+    "我会毫不犹豫地奔向你，<br>这次，每次，次次。",
     "你是我熬过黑夜的唯一光点。",
     "喜欢你是我的长期主义。",
-    "你往左偏一点，我的世界就刚刚好对齐。",
-    "能被你嫌弃，也算一种被偏爱。",
-    "你今天可爱吗？（后台答案：爆表）",
-    "把想你写进日程表，每天自动提醒。",
-    "你是我wifi，我一靠近就满格。",
-    "别人是满分出厂，你是直接开挂。",
-    "爱你这件事，我连后悔的念头都没有。",
-    "你不说话的样子，比电影还好看。",
-    "全世界限量一款，我偏偏抽中了你。",
+    "你往左偏一点，<br>我的世界就刚刚好对齐。",
+    "能被你嫌弃，<br>也算一种被偏爱。",
+    "你今天可爱吗？<br>（后台答案：爆表）",
+    "把想你写进日程表，<br>每天自动提醒。",
+    "你是我wifi，<br>我一靠近就满格。",
+    "别人是满分出厂，<br>你是直接开挂。",
+    "爱你这件事，<br>我连后悔的念头都没有。",
+    "你不说话的样子，<br>比电影还好看。",
+    "全世界限量一款，<br>我偏偏抽中了你。",
 ];
 
 let shuffledPoems = [...poems];
@@ -55,12 +54,40 @@ function shuffle(array) {
     return array;
 }
 
+function typeWriter(textElement, text, speed = 65) {
+    textElement.innerHTML = '';           // 清空
+    textElement.classList.add('typing');
+
+    let i = 0;
+    let result = '';  // ← 新增：先攒字符串
+
+    function type() {
+        if (i < text.length) {
+            if (text.substr(i, 4) === '<br>') {
+                result += '<br>';
+                i += 4;
+            } else {
+                result += text.charAt(i);
+                i++;
+            }
+            textElement.innerHTML = result;   // 只在每次 type 时整体赋值一次
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
 function showPoem(index) {
+    const poemText = document.getElementById('poemText');
+
+    // 先淡出
     poemText.classList.remove('show');
+
     setTimeout(() => {
-        poemText.innerHTML = shuffledPoems[index];
+        const content = shuffledPoems[index];
+        typeWriter(poemText, content, 65);   // 65ms/字 比较舒服，可调
         poemText.classList.add('show');
-    }, 420);
+    }, 500);  // 等待淡出动画完成
 }
 
 function showNextPoem() {
@@ -166,4 +193,17 @@ enterBtn.addEventListener('click', () => {
     }, 1400);
 });
 
-// ... 其余代码不变 ...
+const copyBtn = document.getElementById('copyBtn');
+
+copyBtn.addEventListener('click', () => {
+    const text = poemText.innerText; // 或 innerHTML 如果要保留<br>
+    navigator.clipboard.writeText(text.replace(/<br>/g, '\n'))
+        .then(() => {
+            copyBtn.textContent = '已复制～';
+            setTimeout(() => { copyBtn.textContent = '复制情话'; }, 1800);
+        })
+        .catch(() => {
+            copyBtn.textContent = '复制失败';
+            setTimeout(() => { copyBtn.textContent = '复制情话'; }, 1800);
+        });
+});

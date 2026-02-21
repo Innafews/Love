@@ -114,6 +114,8 @@ h1 {
     transition: all 1.3s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 6; /* 确保在光晕之上 */
     position: relative;
+    white-space: pre-wrap; /* 重要：保留换行和空格 */
+    word-break: break-all; /* 中文友好 */
 }
 
     .poem.show {
@@ -211,3 +213,27 @@ h1 {
         background: rgba(255,255,255,0.18);
         transform: translateY(-3px);
     }
+
+.copy {
+    background: rgba(180, 120, 255, 0.22);
+    color: #e0d0ff;
+}
+
+    .copy:hover {
+        background: rgba(180, 120, 255, 0.4);
+        transform: translateY(-4px);
+    }
+
+.poem.typing::after {
+    content: '|';
+    animation: blink 0.8s step-end infinite;
+    color: #d0b0ff;
+    margin-left: 3px; /* 稍微拉开一点距离，更像真的光标 */
+    vertical-align: baseline; /* 避免位置偏移 */
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
