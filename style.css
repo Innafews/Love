@@ -1,161 +1,213 @@
 ﻿* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "思源黑体", "Microsoft YaHei", sans-serif;
-  height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #fff;
+    font-family: system-ui, "Segoe UI", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    height: 100dvh;
+    overflow: hidden;
+    /* 较暗、柔和的渐变背景 */
+    background: linear-gradient(135deg, #2b1e4d 0%, #3a2a5f 40%, #5c3e7a 70%, #8a5ea6 100%);
+    color: #f0e8ff;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* 封面 */
 .cover {
-  position: fixed;
-  inset: 0;
-  background: url('https://images.unsplash.com/photo-1519741497674-2816a88d0a8b?auto=format&fit=crop&q=80') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 1.2s ease, visibility 1.2s ease;
-  z-index: 10;
+    position: fixed;
+    inset: 0;
+    /* 封面也用稍深的同色系渐变 + 模糊背景图 */
+    background: linear-gradient(rgba(30, 20, 60, 0.72), rgba(50, 30, 80, 0.68)), url('https://images.unsplash.com/photo-1519741497674-2816a88d0a8b?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+    display: grid;
+    place-items: center;
+    transition: all 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
 }
 
-.cover.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
+    .cover.hidden {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.04);
+    }
 
 .cover-content {
-  text-align: center;
-  padding: 40px;
-  background: rgba(0,0,0,0.45);
-  border-radius: 24px;
-  backdrop-filter: blur(8px);
-  max-width: 90%;
+    text-align: center;
+    padding: 3.5rem 2rem;
+    background: rgba(0,0,0,0.42);
+    border-radius: 1.8rem;
+    backdrop-filter: blur(14px);
+    max-width: 92%;
+    border: 1px solid rgba(200,180,255,0.14);
 }
 
-.cover h1 {
-  font-size: 3.2rem;
-  margin-bottom: 1.2rem;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+h1 {
+    font-size: clamp(2.6rem, 8vw, 4.2rem);
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin-bottom: 1.1rem;
+    text-shadow: 0 6px 28px rgba(0,0,0,0.75);
 }
 
-.cover p {
-  font-size: 1.3rem;
-  margin-bottom: 2.5rem;
-  opacity: 0.9;
+.subtitle {
+    font-size: clamp(1.18rem, 4vw, 1.45rem);
+    opacity: 0.92;
+    margin-bottom: 2.8rem;
+    line-height: 1.5;
 }
 
 .enter-btn {
-  padding: 16px 48px;
-  font-size: 1.4rem;
-  background: #ff6b6b;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 8px 30px rgba(255,107,107,0.45);
-  transition: all 0.4s;
+    padding: 1rem 3.2rem;
+    font-size: 1.38rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #d47fff, #a78bff);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 12px 36px rgba(180, 120, 255, 0.35);
+    transition: all 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.enter-btn:hover {
-  transform: translateY(-4px) scale(1.06);
-  background: #ff4757;
-  box-shadow: 0 12px 40px rgba(255,71,87,0.55);
-}
+    .enter-btn:hover {
+        transform: translateY(-6px) scale(1.08);
+        box-shadow: 0 20px 50px rgba(180, 120, 255, 0.5);
+    }
 
 /* 主页面 */
 .main {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 1.5s ease 0.3s;
+    position: relative;
+    height: 100dvh;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transition: opacity 1.6s ease 0.4s;
 }
 
-.main.show {
-  opacity: 1;
-}
+    .main.show {
+        opacity: 1;
+    }
 
 .poem-container {
-  position: relative;
-  z-index: 5;
-  text-align: center;
-  padding: 40px;
-  max-width: 90%;
-  min-width: 320px;
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 2rem;
+    max-width: 94%;
+    min-width: 320px;
 }
 
+/* 诗的文字颜色和阴影 - 加强可见度 */
 .poem {
-  font-size: 2.1rem;
-  line-height: 1.7;
-  font-weight: 300;
-  letter-spacing: 1px;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-  min-height: 180px;
-  margin-bottom: 3rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1.2s ease;
+    font-size: clamp(1.48rem, 5.2vw, 2.18rem);
+    line-height: 1.75;
+    font-weight: 350;
+    letter-spacing: 0.6px;
+    /* 改用更明显的紫白 + 更强的发光阴影 */
+    color: #f0eaff;
+    text-shadow: 0 0 15px rgba(200, 180, 255, 0.7), 0 0 30px rgba(160, 120, 220, 0.5), 0 6px 32px rgba(0,0,0,0.65);
+    min-height: 160px;
+    margin-bottom: 2.8rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 6; /* 确保在光晕之上 */
+    position: relative;
 }
 
-.poem.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .poem.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-.next-btn {
-  padding: 14px 42px;
-  font-size: 1.3rem;
-  background: rgba(255,255,255,0.18);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 50px;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: all 0.4s;
-}
-
-.next-btn:hover {
-  background: rgba(255,255,255,0.28);
-  transform: translateY(-3px);
-}
-
-/* 背景漂浮形状 */
+/* 背景漂浮光晕 - 完全随机化 */
 .bg-shapes {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
 }
 
 .shape {
-  position: absolute;
-  background: rgba(255,255,255,0.12);
-  border-radius: 50%;
-  backdrop-filter: blur(2px);
-  animation: float 25s infinite ease-in-out;
+    position: absolute;
+    background: radial-gradient( circle at 40% 40%, rgba(220, 180, 255, 0.22) 0%, rgba(160, 120, 220, 0.08) 50%, transparent 80% );
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(200, 180, 255, 0.12);
+    will-change: transform, opacity, width, height;
 }
 
-.shape1 { width: 320px; height: 320px; top: 10%; left: -10%; animation-delay: 0s; }
-.shape2 { width: 420px; height: 420px; bottom: 15%; right: -15%; animation-delay: 8s; }
-.shape3 { width: 280px; height: 280px; top: 55%; right: 5%; animation-delay: 15s; }
-
-@keyframes float {
-  0%,100%   { transform: translate(0,0) rotate(0deg); }
-  25%       { transform: translate(120px,80px) rotate(30deg); }
-  50%       { transform: translate(40px,160px) rotate(60deg); }
-  75%       { transform: translate(-80px,60px) rotate(90deg); }
+/* 6个光晕，初始状态用 JS 随机生成 */
+.shape1, .shape2, .shape3, .shape4, .shape5, .shape6 {
+    animation: randomFloat var(--duration) infinite ease-in-out alternate;
 }
 
-/* 响应式 */
-@media (max-width: 768px) {
-  .cover h1 { font-size: 2.4rem; }
-  .poem { font-size: 1.7rem; }
+/* 动画关键帧 - 更大幅度、更随机感 */
+@keyframes randomFloat {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: var(--base-opacity);
+    }
+
+    30% {
+        transform: translate(calc(80px + var(--rand-x)), calc(60px + var(--rand-y))) scale(calc(0.9 + var(--rand-scale))) rotate(calc(20deg + var(--rand-rotate)));
+        opacity: calc(var(--base-opacity) + 0.25);
+    }
+
+    60% {
+        transform: translate(calc(-120px + var(--rand-x2)), calc(180px + var(--rand-y2))) scale(calc(1.15 + var(--rand-scale2))) rotate(calc(-35deg + var(--rand-rotate2)));
+        opacity: calc(var(--base-opacity) - 0.08);
+    }
+
+    100% {
+        transform: translate(calc(40px + var(--rand-x3)), calc(-100px + var(--rand-y3))) scale(calc(0.95 + var(--rand-scale3))) rotate(calc(50deg + var(--rand-rotate3)));
+        opacity: var(--base-opacity);
+    }
 }
+
+/* 手机上稍微降低动画幅度，避免太花哨 */
+@media (max-width: 640px) {
+    .shape {
+        animation-duration: calc(var(--duration) * 1.4); /* 更慢一些 */
+    }
+}
+
+/* 按钮组 */
+.btn-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.9rem 2.4rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.38s;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.next {
+    background: rgba(255,255,255,0.16);
+    color: white;
+}
+
+    .next:hover {
+        background: rgba(255,255,255,0.3);
+        transform: translateY(-4px);
+    }
+
+.prev {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.9);
+}
+
+    .prev:hover {
+        background: rgba(255,255,255,0.18);
+        transform: translateY(-3px);
+    }

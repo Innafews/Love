@@ -6,69 +6,45 @@
     "如果心动有形状，<br>那一定是你今天穿的那件白色毛衣。",
     "我这辈子最勇敢的事，<br>就是喜欢你这件事我从没想过放弃。",
     "你笑起来真好看，<br>像夏天的星星掉进了我的眼睛里。",
-    "我把风都给了你，<br>所以你一转身我就起鸡皮疙瘩。",
-    "如果有下辈子，<br>我还想在人群里一眼就找到你。",
-    "不是因为你有多好，<br>而是因为你让我变得更好。",
     "我想写一首很长的诗，<br>第一句是你的名字，最后一句还是你。",
     "遇见你之后，<br>我才知道原来心跳也可以这么甜。",
-    "我偷偷许愿，<br>下次流星雨的时候你也在我身边。",
-    "你是我最想藏起来的秘密，<br>也是我最想炫耀的骄傲。",
-    "如果可以，<br>我想把我的余生都用来爱你。",
-    "你今天有没有很可爱？<br>（我已经替你回答了：超级无敌可爱！）",
-    "你眨一次眼，<br>我就输掉整个银河。",
-    // 新增诗句，已统一加上 <br> 分行，风格一致
-    "我的心跳从遇见你那天开始偷懒，<br>只肯跟着你走。",
-    "晚风替我吻了你，<br>而我只能站在原地发抖。",
-    "想把你藏进瞳孔，<br>结果你直接住进了心跳。",
     "你是我的第六感，<br>其余五感都用来想你。",
-    "全世界都在下雨，<br>只有你这里是晴天。",
-    "我把余生所有节日，<br>都偷偷改成了你的生日。",
-    "你笑一下，<br>我就愿意再当一百年傻子。",
-    "爱你这件事，<br>比我本人还勇敢。",
-    "我的灵魂认出你之前，<br>我的身体已经先投降。",
-    "你是我的例外，<br>也是唯一规则。",
-    "想你的时候，<br>连空气都变成了你的形状。",
-    "如果心跳能寄快递，<br>我早就把全世界寄给你了。",
     "你往我心里走了一步，<br>我直接把整条路都拆了。",
     "所有没说出口的爱，<br>都在深夜偷偷涨潮。",
     "你是我的北极星，<br>我却是个路痴。",
-    "能被你嫌弃，<br>也算一种被你记住的方式。",
-    "我把克制写成一本书，<br>唯一读者是你。",
-    "你出现之前，<br>我以为自己挺会喜欢人的。",
-    "我的世界观正在被你，<br>强制重写。",
     "想和你一起看日出，<br>然后赖床赖到日落。",
     "你声音里的电流，<br>至今还在我脊椎里跑。",
-    "爱你这件事，<br>我连自己都说服不了要放弃。",
     "你是我的软肋，<br>也是我唯一的铠甲。",
     "每一次想你，<br>都像把心脏拿出来晒太阳。",
-    "我偷偷把你名字纹在了，<br>每一次心跳上。",
     "你不说话的时候，<br>比宇宙还安静还致命。",
-    "我这辈子最认真的作弊，<br>就是爱你这件事。",
     "你回头看我一眼，<br>我就能再勇敢十年。",
-    "我的梦境从你开始，<br>收费了。",
     "想把你揉进骨头里，<br>连疼都觉得甜。",
     "你是我的限定款，<br>我是你的过期不候。",
-    "爱你需要勇气，<br>亲你需要酒量。",
-    "你今天没出现，<br>我的整个世界就卡帧了。",
-    "我把余光都借给你了，<br>所以才总是看不见别人。",
-    "你是我的暴雨，<br>也是我的避雨处。",
-    "心动是你的形状，<br>失控是你的味道。",
-    "我这人没别的优点，<br>就是特别能忍着不说想你。",
-    "你笑得太好看，<br>害我余生都想当小偷。",
     "我的每一句晚安，<br>其实都想改成：快来我怀里。",
     "你是我的劫，<br>也是我唯一的救赎。",
-    "爱你这件事，<br>已经成为我最熟练的坏习惯。",
-    "你在我面前出现过，<br>我就再也回不去从前。",
     "我的世界崩坏得刚刚好，<br>塌成了你的形状。",
-    "想和你吵架，<br>然后在你哭之前抱住你。",
-    "你是我的天灾，<br>我甘心被你毁掉。",
-    "每一次心跳都在偷偷，<br>喊你的名字。",
-    "我把所有浪漫写成诗，<br>最后署名都是你。",
-    "你不爱我也没关系，<br>反正我已经把你爱成了气候。",
-    "余生很长，<br>第一句情话永远是：你好，我喜欢你。",
+    "你今天没出现，<br>我的整个世界就卡帧了。",
+    "心动是你的形状，<br>失控是你的味道。",
+    "你笑得太好看，<br>害我余生都想当小偷。",
+    // 以下为2025-2026流行/新风格补充（可继续增删）
+    "你出现时，心动就有了定义。",
+    "初见乍欢，久处仍怦然。",
+    "这次我们都带着真诚，慢慢来吧。",
+    "我会毫不犹豫地奔向你，这次，每次，次次。",
+    "你是我熬过黑夜的唯一光点。",
+    "喜欢你是我的长期主义。",
+    "你往左偏一点，我的世界就刚刚好对齐。",
+    "能被你嫌弃，也算一种被偏爱。",
+    "你今天可爱吗？（后台答案：爆表）",
+    "把想你写进日程表，每天自动提醒。",
+    "你是我wifi，我一靠近就满格。",
+    "别人是满分出厂，你是直接开挂。",
+    "爱你这件事，我连后悔的念头都没有。",
+    "你不说话的样子，比电影还好看。",
+    "全世界限量一款，我偏偏抽中了你。",
 ];
 
-let shuffledPoems = [...poems]; // 初始洗牌副本
+let shuffledPoems = [...poems];
 let currentIndex = -1;
 
 function shuffle(array) {
@@ -79,34 +55,115 @@ function shuffle(array) {
     return array;
 }
 
+function showPoem(index) {
+    poemText.classList.remove('show');
+    setTimeout(() => {
+        poemText.innerHTML = shuffledPoems[index];
+        poemText.classList.add('show');
+    }, 420);
+}
+
 function showNextPoem() {
     currentIndex++;
-
-    // 如果已经播完一轮，重新洗牌并从头开始
     if (currentIndex >= shuffledPoems.length) {
         shuffledPoems = shuffle([...poems]);
         currentIndex = 0;
     }
-
-    poemText.classList.remove('show');
-
-    setTimeout(() => {
-        poemText.innerHTML = shuffledPoems[currentIndex];
-        poemText.classList.add('show');
-    }, 400);
+    showPoem(currentIndex);
 }
 
-// 点击进入时也直接显示第一句随机
+function showPrevPoem() {
+    currentIndex--;
+    if (currentIndex < 0) {
+        currentIndex = shuffledPoems.length - 1;
+    }
+    showPoem(currentIndex);
+}
+
+// 进入
 enterBtn.addEventListener('click', () => {
     cover.classList.add('hidden');
-
     setTimeout(() => {
         main.classList.add('show');
-        // 进入时先洗一次牌
         shuffledPoems = shuffle([...poems]);
         currentIndex = -1;
         showNextPoem();
-    }, 1200);
+    }, 1400);
 });
 
 nextBtn.addEventListener('click', showNextPoem);
+prevBtn.addEventListener('click', showPrevPoem);
+
+// ... 原有的 poems 数组、shuffle 函数、showPoem 等保持不变 ...
+
+// 进入主页面后随机生成光晕
+function initShapes() {
+    const shapes = document.querySelectorAll('.shape');
+    const colors = [
+        'rgba(220,180,255,',
+        'rgba(180,140,255,',
+        'rgba(200,160,240,',
+        'rgba(160,120,220,',
+        'rgba(210,170,255,'
+    ];
+
+    shapes.forEach((shape, i) => {
+        // 随机大小 300~700px
+        const size = 300 + Math.random() * 400;
+        shape.style.width = size + 'px';
+        shape.style.height = size + 'px';
+
+        // 随机初始位置（偏离屏幕边缘）
+        const top = -20 + Math.random() * 140;   // -20% ~ 120%
+        const left = -30 + Math.random() * 160;
+        shape.style.top = top + '%';
+        shape.style.left = left + '%';
+
+        // 随机动画时长 40~90秒
+        const duration = 40 + Math.random() * 50;
+        shape.style.setProperty('--duration', duration + 's');
+
+        // 随机基础透明度 0.18~0.38
+        const opacity = 0.18 + Math.random() * 0.20;
+        shape.style.setProperty('--base-opacity', opacity);
+
+        // 为动画提供随机偏移量（让每个光晕轨迹不同）
+        shape.style.setProperty('--rand-x', (Math.random() * 200 - 100) + 'px');
+        shape.style.setProperty('--rand-y', (Math.random() * 200 - 100) + 'px');
+        shape.style.setProperty('--rand-x2', (Math.random() * 300 - 150) + 'px');
+        shape.style.setProperty('--rand-y2', (Math.random() * 300 - 150) + 'px');
+        shape.style.setProperty('--rand-x3', (Math.random() * 200 - 100) + 'px');
+        shape.style.setProperty('--rand-y3', (Math.random() * 200 - 100) + 'px');
+
+        shape.style.setProperty('--rand-scale', (Math.random() * 0.4).toFixed(2));
+        shape.style.setProperty('--rand-scale2', (Math.random() * 0.5 - 0.1).toFixed(2));
+        shape.style.setProperty('--rand-scale3', (Math.random() * 0.3 - 0.05).toFixed(2));
+
+        shape.style.setProperty('--rand-rotate', (Math.random() * 60 - 30) + 'deg');
+        shape.style.setProperty('--rand-rotate2', (Math.random() * 80 - 40) + 'deg');
+        shape.style.setProperty('--rand-rotate3', (Math.random() * 100 - 50) + 'deg');
+
+        // 随机延迟
+        shape.style.animationDelay = (Math.random() * 15) + 's';
+
+        // 随机颜色（轻微区别）
+        const colorIdx = Math.floor(Math.random() * colors.length);
+        shape.style.background = `radial-gradient(circle at ${30 + Math.random() * 40}% ${30 + Math.random() * 40}%, ${colors[colorIdx]}${opacity + 0.15}) 0%, ${colors[colorIdx]}${opacity - 0.05}) 60%, transparent 85%)`;
+    });
+}
+
+// 修改进入事件
+enterBtn.addEventListener('click', () => {
+    cover.classList.add('hidden');
+    setTimeout(() => {
+        main.classList.add('show');
+        shuffledPoems = shuffle([...poems]);
+        currentIndex = -1;
+        showNextPoem();
+
+        // 等主页面出现后再初始化随机光晕
+        setTimeout(initShapes, 800);
+    }, 1400);
+});
+
+// ... 其余代码不变 ...

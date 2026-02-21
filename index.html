@@ -1,36 +1,45 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>给最爱的你</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="给最爱的你" />
+    <title>给最爱的你</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 可选：添加一个简洁的图标 -->
+    <!-- <link rel="icon" href="heart.ico"> -->
 </head>
 <body>
 
-  <!-- 封面 -->
-  <div class="cover" id="cover">
-    <div class="cover-content">
-      <h1>给世界上最温柔的你</h1>
-      <p>点击下方按钮，悄悄话只说给你听</p>
-      <button class="enter-btn" id="enterBtn">打开心动</button>
+    <!-- 封面 -->
+    <div class="cover" id="cover">
+        <div class="cover-content">
+            <h1>给最爱的你</h1>
+            <button class="enter-btn" id="enterBtn">打开心动</button>
+        </div>
     </div>
-  </div>
 
-  <!-- 主内容区域（一开始隐藏） -->
-  <div class="main" id="main">
-    <div class="poem-container">
-      <div class="poem" id="poemText"></div>
-      <button class="next-btn" id="nextBtn">换一句情话</button>
-    </div>
-    
-    <div class="bg-shapes">
-      <div class="shape shape1"></div>
-      <div class="shape shape2"></div>
-      <div class="shape shape3"></div>
-    </div>
-  </div>
+    <!-- 主内容 -->
+    <div class="main" id="main">
+        <div class="poem-container">
+            <div class="poem" id="poemText"></div>
+            <div class="btn-group">
+                <button class="btn prev" id="prevBtn">上一句</button>
+                <button class="btn next" id="nextBtn">换一句</button>
+            </div>
+        </div>
 
-  <script src="script.js"></script>
+        <!-- 背景装饰 -->
+        <div class="bg-shapes">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+            <div class="shape shape4"></div>
+            <div class="shape shape5"></div>
+            <div class="shape shape6"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
