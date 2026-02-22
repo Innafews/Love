@@ -243,3 +243,46 @@ h1 {
         opacity: 0;
     }
 }
+
+/* Footer 样式 - 保持梦幻低调 */
+.footer {
+    position: fixed;
+    bottom: 1.2rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 4; /* 低于诗和按钮，但高于背景光晕 */
+    pointer-events: none; /* 避免挡住可能的交互 */
+    opacity: 0.7;
+    transition: opacity 1.2s ease;
+}
+
+.main.show ~ .footer {
+    opacity: 0.85; /* 进入主页面后稍提高可见度 */
+}
+
+.footer-content {
+    font-size: clamp(0.92rem, 3.2vw, 1.05rem);
+    color: #d7c0ff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 0 10px rgba(180,140,255,0.25);
+    letter-spacing: 0.5px;
+    font-weight: 350;
+    background: rgba(30,20,60,0.28);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1.8rem;
+    border-radius: 2rem;
+    display: inline-block;
+    border: 1px solid rgba(200,180,255,0.12);
+}
+
+/* 极小屏幕适配 */
+@media (max-width: 480px) {
+    .footer {
+        bottom: 0.9rem;
+    }
+
+    .footer-content {
+        padding: 0.4rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}

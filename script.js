@@ -55,11 +55,11 @@ function shuffle(array) {
 }
 
 function typeWriter(textElement, text, speed = 65) {
-    textElement.innerHTML = '';           // 清空
+    textElement.innerHTML = '';
     textElement.classList.add('typing');
 
     let i = 0;
-    let result = '';  // ← 新增：先攒字符串
+    let result = '';
 
     function type() {
         if (i < text.length) {
@@ -70,7 +70,7 @@ function typeWriter(textElement, text, speed = 65) {
                 result += text.charAt(i);
                 i++;
             }
-            textElement.innerHTML = result;   // 只在每次 type 时整体赋值一次
+            textElement.innerHTML = result;
             setTimeout(type, speed);
         }
     }
@@ -80,14 +80,13 @@ function typeWriter(textElement, text, speed = 65) {
 function showPoem(index) {
     const poemText = document.getElementById('poemText');
 
-    // 先淡出
     poemText.classList.remove('show');
 
     setTimeout(() => {
         const content = shuffledPoems[index];
-        typeWriter(poemText, content, 65);   // 65ms/字 比较舒服，可调
+        typeWriter(poemText, content, 65);
         poemText.classList.add('show');
-    }, 500);  // 等待淡出动画完成
+    }, 500);
 }
 
 function showNextPoem() {
@@ -107,7 +106,7 @@ function showPrevPoem() {
     showPoem(currentIndex);
 }
 
-// 进入
+// 进入主页面
 enterBtn.addEventListener('click', () => {
     cover.classList.add('hidden');
     setTimeout(() => {
@@ -115,15 +114,29 @@ enterBtn.addEventListener('click', () => {
         shuffledPoems = shuffle([...poems]);
         currentIndex = -1;
         showNextPoem();
+        setTimeout(initShapes, 800);
     }, 1400);
 });
 
 nextBtn.addEventListener('click', showNextPoem);
 prevBtn.addEventListener('click', showPrevPoem);
 
-// ... 原有的 poems 数组、shuffle 函数、showPoem 等保持不变 ...
+// 复制功能
+const copyBtn = document.getElementById('copyBtn');
+copyBtn.addEventListener('click', () => {
+    const text = poemText.innerText;
+    navigator.clipboard.writeText(text.replace(/<br>/g, '\n'))
+        .then(() => {
+            copyBtn.textContent = '已复制～';
+            setTimeout(() => { copyBtn.textContent = '复制情话'; }, 1800);
+        })
+        .catch(() => {
+            copyBtn.textContent = '复制失败';
+            setTimeout(() => { copyBtn.textContent = '复制情话'; }, 1800);
+        });
+});
 
-// 进入主页面后随机生成光晕
+// 随机光晕（保持原样）
 function initShapes() {
     const shapes = document.querySelectorAll('.shape');
     const colors = [
@@ -135,26 +148,21 @@ function initShapes() {
     ];
 
     shapes.forEach((shape, i) => {
-        // 随机大小 300~700px
         const size = 300 + Math.random() * 400;
         shape.style.width = size + 'px';
         shape.style.height = size + 'px';
 
-        // 随机初始位置（偏离屏幕边缘）
-        const top = -20 + Math.random() * 140;   // -20% ~ 120%
+        const top = -20 + Math.random() * 140;
         const left = -30 + Math.random() * 160;
         shape.style.top = top + '%';
         shape.style.left = left + '%';
 
-        // 随机动画时长 40~90秒
         const duration = 40 + Math.random() * 50;
         shape.style.setProperty('--duration', duration + 's');
 
-        // 随机基础透明度 0.18~0.38
         const opacity = 0.18 + Math.random() * 0.20;
         shape.style.setProperty('--base-opacity', opacity);
 
-        // 为动画提供随机偏移量（让每个光晕轨迹不同）
         shape.style.setProperty('--rand-x', (Math.random() * 200 - 100) + 'px');
         shape.style.setProperty('--rand-y', (Math.random() * 200 - 100) + 'px');
         shape.style.setProperty('--rand-x2', (Math.random() * 300 - 150) + 'px');
@@ -170,40 +178,36 @@ function initShapes() {
         shape.style.setProperty('--rand-rotate2', (Math.random() * 80 - 40) + 'deg');
         shape.style.setProperty('--rand-rotate3', (Math.random() * 100 - 50) + 'deg');
 
-        // 随机延迟
         shape.style.animationDelay = (Math.random() * 15) + 's';
 
-        // 随机颜色（轻微区别）
         const colorIdx = Math.floor(Math.random() * colors.length);
         shape.style.background = `radial-gradient(circle at ${30 + Math.random() * 40}% ${30 + Math.random() * 40}%, ${colors[colorIdx]}${opacity + 0.15}) 0%, ${colors[colorIdx]}${opacity - 0.05}) 60%, transparent 85%)`;
     });
 }
 
-// 修改进入事件
-enterBtn.addEventListener('click', () => {
-    cover.classList.add('hidden');
-    setTimeout(() => {
-        main.classList.add('show');
-        shuffledPoems = shuffle([...poems]);
-        currentIndex = -1;
-        showNextPoem();
+// ─────────────── 新增：实时日期 + 陪伴天数 ───────────────
+const startDate = new Date(2025, 8, 28, 0, 0, 0); // 9月28日 → 月份从0开始
 
-        // 等主页面出现后再初始化随机光晕
-        setTimeout(initShapes, 800);
-    }, 1400);
-});
+function updateLoveTime() {
+    const now = new Date();
 
-const copyBtn = document.getElementById('copyBtn');
+    // 格式化日期时间
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hour = String(now.getHours()).padStart(2, '0');
+    const minute = String(now.getMinutes()).padStart(2, '0');
 
-copyBtn.addEventListener('click', () => {
-    const text = poemText.innerText; // 或 innerHTML 如果要保留<br>
-    navigator.clipboard.writeText(text.replace(/<br>/g, '\n'))
-        .then(() => {
-            copyBtn.textContent = '已复制～';
-            setTimeout(() => { copyBtn.textContent = '复制情话'; }, 1800);
-        })
-        .catch(() => {
-            copyBtn.textContent = '复制失败';
-            setTimeout(() => { copyBtn.textContent = '复制情话'; }, 1800);
-        });
-});
+    document.getElementById('loveDate').textContent =
+        `今天是 ${year}年${month}月${day}日 ${hour}:${minute}`;
+
+    // 计算陪伴天数（从第1天开始算）
+    const diffMs = now - startDate;
+    const days = Math.floor(diffMs / (1000 * 60 * 60 * 24)) + 1;
+
+    document.getElementById('loveDays').textContent = days;
+}
+
+// 立即执行一次 + 每秒更新
+updateLoveTime();
+setInterval(updateLoveTime, 1000);
