@@ -199,7 +199,7 @@ function updateLoveTime() {
     const minute = String(now.getMinutes()).padStart(2, '0');
 
     document.getElementById('loveDate').textContent =
-        `今天是 ${year}年${month}月${day}日 ${hour}:${minute}`;
+        `现在是 ${year}年${month}月${day}日 ${hour}:${minute}`;
 
     // 计算陪伴天数（从第1天开始算）
     const diffMs = now - startDate;
