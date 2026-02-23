@@ -1,5 +1,6 @@
-﻿// letters.js
-// 统一管理「写给妍卿」的三个板块：诗、长信、网站想说的话
+﻿// 修改后的 letters.js
+// letters.js
+// 统一管理「写给妍卿」的三个板块：诗、长信、网站想对你说的话
 
 // ─────────────── 实时日期 + 陪伴天数 ───────────────
 const startDate = new Date(2025, 8, 28, 0, 0, 0); // 2025年9月28日
@@ -46,37 +47,106 @@ function typeWriter(element, text, speed = 60) {
     type();
 }
 
-// ─────────────── 诗的部分 ───────────────
+// ─────────────── 诗的部分（修改为与长信一致的对象结构） ───────────────
 const poems = [
-    "你叫妍卿，<br>像从宋代笺纸上洇开的那一滴胭脂，<br>落在我的空白里，再也擦不掉。",
-    "我把想你的次数藏在每一次呼吸之间，<br>结果还是被你听见了心跳的秘密。",
-    "如果有一天我变得很沉默，<br>不是不爱你了，<br>只是把所有力气都用来在心里喊你的名字。",
-    "你今天穿的那件毛衣，<br>颜色叫做“让我想把全世界的好天气都偷来给你”。",
-    "喜欢你是件需要勇气的事，<br>但爱上你之后，<br>我连害怕都觉得甜。",
-    "你笑起来的时候，<br>我世界里的像素全部自动升级成4K。",
-    "我这辈子最想收藏的，<br>不是限量款球鞋，<br>而是你每一次看向我时的眼神。",
-    "如果心动会留下指纹，<br>那我的心脏早就被你按满手印了。",
-    "你往我生命里走了一步，<br>我直接把整座城墙都拆了迎接你。",
-    "全世界都在降温，<br>只有你在我身边是恒定的37度。",
+    {
+        title: "妍卿",
+        date: "未知",
+        content: `你叫妍卿，
+像从宋代笺纸上洇开的那一滴胭脂，
+落在我的空白里，再也擦不掉。`
+    },
+    {
+        title: "想你的次数",
+        date: "未知",
+        content: `我把想你的次数藏在每一次呼吸之间，
+结果还是被你听见了心跳的秘密。`
+    },
+    {
+        title: "沉默",
+        date: "未知",
+        content: `如果有一天我变得很沉默，
+不是不爱你了，
+只是把所有力气都用来在心里喊你的名字。`
+    },
+    {
+        title: "毛衣",
+        date: "未知",
+        content: `你今天穿的那件毛衣，
+颜色叫做“让我想把全世界的好天气都偷来给你”。`
+    },
+    {
+        title: "喜欢你",
+        date: "未知",
+        content: `喜欢你是件需要勇气的事，
+但爱上你之后，
+我连害怕都觉得甜。`
+    },
+    {
+        title: "笑容",
+        date: "未知",
+        content: `你笑起来的时候，
+我世界里的像素全部自动升级成4K。`
+    },
+    {
+        title: "收藏",
+        date: "未知",
+        content: `我这辈子最想收藏的，
+不是限量款球鞋，
+而是你每一次看向我时的眼神。`
+    },
+    {
+        title: "心动指纹",
+        date: "未知",
+        content: `如果心动会留下指纹，
+那我的心脏早就被你按满手印了。`
+    },
+    {
+        title: "生命",
+        date: "未知",
+        content: `你往我生命里走了一步，
+我直接把整座城墙都拆了迎接你。`
+    },
+    {
+        title: "降温",
+        date: "未知",
+        content: `全世界都在降温，
+只有你在我身边是恒定的37度。`
+    },
     // 你可以在这里继续添加很多首
 ];
 
-let poemIndex = -1;
+let poemIndex = 0; // 修改为从0开始，与长信一致
 let shuffledPoems = [...poems].sort(() => Math.random() - 0.5);
 
 function showPoem(direction = 'next') {
-    const poemEl = document.getElementById('poemText');
-    poemEl.classList.remove('show');
+    if (direction === 'next') {
+        poemIndex = (poemIndex + 1) % shuffledPoems.length;
+    } else {
+        poemIndex = (poemIndex - 1 + shuffledPoems.length) % shuffledPoems.length;
+    }
+
+    const poem = shuffledPoems[poemIndex];
+    const html = `
+        <h2 style="margin-bottom:1.2rem; color:#d8bfff; text-shadow:0 4px 16px rgba(0,0,0,0.6);">
+            ${poem.title}
+        </h2>
+        <div style="font-size:0.92rem; opacity:0.85; margin-bottom:1.8rem;">
+            ${poem.date}
+        </div>
+        <div style="white-space: pre-wrap; line-height:1.9;">
+            ${poem.content.replace(/\n/g, '<br>')}
+        </div>
+    `;
+
+    const container = document.getElementById('poemArticleText');
+    container.innerHTML = '';
+    container.style.opacity = '0';
 
     setTimeout(() => {
-        if (direction === 'next') {
-            poemIndex = (poemIndex + 1) % shuffledPoems.length;
-        } else {
-            poemIndex = (poemIndex - 1 + shuffledPoems.length) % shuffledPoems.length;
-        }
-        typeWriter(poemEl, shuffledPoems[poemIndex]);
-        poemEl.classList.add('show');
-    }, 400);
+        container.innerHTML = html;
+        container.style.opacity = '1';
+    }, 300);
 }
 
 // ─────────────── 长信 / 文章部分 ───────────────
@@ -116,7 +186,7 @@ ${new Date().toLocaleDateString('zh-CN')}`
     {
         title: "下雨天想对你说的话",
         date: "未知",
-        content:`今天又下雨了。
+        content: `今天又下雨了。
 
 每次下雨我都会想起你第一次在我伞下面躲雨的样子。
 你头发上有水珠，睫毛也湿湿的，却还在笑，说「还好有你」。
@@ -213,14 +283,15 @@ function switchTab(tabName) {
 
     // 切换时触发动画 / 内容加载
     if (tabName === 'poem') {
-        if (poemIndex === -1) showPoem('next');
+        if (!document.getElementById('poemArticleText').innerHTML) {
+            showPoem('next');
+        }
     } else if (tabName === 'article') {
         if (!document.getElementById('articleText').innerHTML) {
             showLetter('next');
         }
     } else if (tabName === 'site') {
         const el = document.getElementById('siteLetter');
-        // 移除 !el.innerHTML 检查，每次切换都填充内容，确保显示
         el.innerHTML = siteLetter;
         el.style.opacity = '0';
         setTimeout(() => el.style.opacity = '1', 200);
@@ -264,21 +335,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 诗的上一首 / 下一首
+    // 诗的上一篇 / 下一篇
     document.getElementById('prevPoem')?.addEventListener('click', () => showPoem('prev'));
     document.getElementById('nextPoem')?.addEventListener('click', () => showPoem('next'));
 
-    // 长信的上一封 / 下一封
+    // 长信的上一篇 / 下一篇
     document.getElementById('prevArticle')?.addEventListener('click', () => showLetter('prev'));
     document.getElementById('nextArticle')?.addEventListener('click', () => showLetter('next'));
 
     // 复制功能（诗）
     document.getElementById('copyPoem')?.addEventListener('click', () => {
-        const text = document.getElementById('poemText').innerText;
+        const text = document.getElementById('poemArticleText').innerText;
         navigator.clipboard.writeText(text).then(() => {
             const btn = document.getElementById('copyPoem');
             btn.textContent = '已复制';
-            setTimeout(() => btn.textContent = '复制', 1800);
+            setTimeout(() => btn.textContent = '复制全文', 1800);
         });
     });
 
