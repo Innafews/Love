@@ -43,6 +43,10 @@
     "全世界限量一款，<br>我偏偏抽中了你。",
 ];
 
+// 在文件顶部（poems 数组下面）新增
+const bgm = new Audio('陶喆 - 天天.mp3');
+bgm.loop = true;           // 想要循环就加这行，不想要就删掉或改成 false
+
 let shuffledPoems = [...poems];
 let currentIndex = -1;
 
@@ -109,6 +113,11 @@ function showPrevPoem() {
 // 进入主页面
 enterBtn.addEventListener('click', () => {
     cover.classList.add('hidden');
+    // 开始播放（放在 transition 之前或之后都可以）
+    bgm.play().catch(err => {
+        console.log("播放失败：", err);
+        // 大部分现代浏览器第一次必须用户交互才能播放
+    });
     setTimeout(() => {
         main.classList.add('show');
         shuffledPoems = shuffle([...poems]);
@@ -211,3 +220,14 @@ function updateLoveTime() {
 // 立即执行一次 + 每秒更新
 updateLoveTime();
 setInterval(updateLoveTime, 1000);
+
+// 示例：加一个静音/播放切换按钮
+const muteBtn = document.createElement('button');
+muteBtn.textContent = '🔊';
+muteBtn.style.cssText = 'position:fixed; bottom:80px; right:20px; z-index:10; padding:8px 14px; border-radius:50%; background:rgba(0,0,0,0.4); color:white; border:none; cursor:pointer;';
+document.body.appendChild(muteBtn);
+
+muteBtn.addEventListener('click', () => {
+    bgm.muted = !bgm.muted;
+    muteBtn.textContent = bgm.muted ? '🔇' : '🔊';
+});
