@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="写给妍卿的心里话" />
+    <title>写给妍卿</title>
+    <link rel="stylesheet" href="letters-style.css">
+</head>
+<body>
+
+    <!-- 导航栏（多加一个“心里话”入口） -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="index.html" class="nav-link">心动情话</a>
+            <a href="timeline.html" class="nav-link">恋爱时间轴</a>
+            <a href="love-letter.html" class="nav-link active">写给妍卿</a>
+        </div>
+    </nav>
+
+    <!-- 封面（类似首页，但文案不同） -->
+    <div class="cover" id="cover">
+        <div class="cover-content">
+            <h1>妍卿</h1>
+            <p class="subtitle">这是我写给你的全部真心</p>
+            <button class="enter-btn" id="enterBtn">打开信封</button>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="main" id="main">
+
+        <!-- Tab 切换 -->
+        <div class="tab-bar">
+            <button class="tab-btn active" data-tab="poem">写给你的诗</button>
+            <button class="tab-btn" data-tab="article">写给你的长信</button>
+            <button class="tab-btn" data-tab="site">这个网站想对你说</button>
+        </div>
+
+        <!-- 三个内容容器，只有一个可见 -->
+        <div class="content-container">
+
+            <!-- 诗 -->
+            <div id="tab-poem" class="tab-content active">
+                <div class="poem-container">
+                    <div class="poem" id="poemText"></div>
+                    <div class="btn-group">
+                        <button class="btn prev" id="prevPoem">上一首</button>
+                        <button class="btn next" id="nextPoem">下一首</button>
+                        <button class="btn copy" id="copyPoem">复制</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 文章 -->
+            <div id="tab-article" class="tab-content">
+                <div class="article-container" id="articleText"></div>
+                <div class="btn-group article-btns">
+                    <button class="btn prev" id="prevArticle">上一篇</button>
+                    <button class="btn next" id="nextArticle">下一篇</button>
+                    <button class="btn copy" id="copyArticle">复制全文</button>
+                </div>
+            </div>
+
+            <!-- 网站想说的话（静态为主） -->
+            <div id="tab-site" class="tab-content">
+                <div class="site-letter" id="siteLetter">
+                    <!-- 内容由 JS 填充或直接写在这里 -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 背景光晕（复用） -->
+        <div class="bg-shapes">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+            <div class="shape shape4"></div>
+            <div class="shape shape5"></div>
+            <div class="shape shape6"></div>
+        </div>
+
+        <!-- 音量控制（可选保留） -->
+        <div id="muteContainer" class="mute-container">
+            <button id="muteBtn">🔊</button>
+        </div>
+
+    </div>
+
+    <!-- footer（复用） -->
+    <footer class="footer">
+        <div class="footer-content">
+            <span id="loveDate">现在是 0000年0月0日 00:00</span>
+            <span>　是我陪伴你的第</span>
+            <span id="loveDays">0</span>
+            <span>天</span>
+            <p>给最爱的妍卿</p>
+        </div>
+    </footer>
+
+    <!-- 引入三个新 JS，按需拆分也可合并成一个 -->
+    <script src="letters.js"></script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9d2728b80f51527b',t:'MTc3MTg1NDI3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+</html>
