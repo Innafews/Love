@@ -561,29 +561,31 @@ h1 {
     }
 }
 
-/* 极小屏适配 (max-width: 480px) - 如小手机 */
+/* 媒体查询：手机端适配 (max-width: 768px) */
+@media (max-width: 768px) {
+    .main, .timeline-main {
+        padding: 5rem 0.5rem 5rem; /* 增加 padding-top 到 5rem（覆盖原 3.5rem），根据实际 navbar 高度微调 */
+    }
+
+    /* 如果 timeline-container 或其他容器有额外 margin，也可调整 */
+    .timeline-container {
+        margin-top: 1rem; /* 可选：额外间距，避免紧贴 */
+    }
+}
+
+/* 极小屏适配 (max-width: 480px) */
 @media (max-width: 480px) {
+    .main, .timeline-main {
+        padding: 8rem 0.3rem 4.5rem; /* 增加 padding-top 到 8rem（因为 column 模式下 navbar 更高），根据实际测试微调 */
+    }
+
     .navbar-content {
-        flex-direction: column; /* 垂直堆叠导航链接，避免横向挤压 */
+        flex-direction: column;
         gap: 0.3rem;
     }
 
     .nav-link {
         padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
-    }
-
-    .main, .timeline-main {
-        padding: 3rem 0.3rem 4.5rem; /* 进一步缩小 */
-    }
-
-    .footer {
-        bottom: 0.5rem; /* 贴近底部，避免遮挡 */
-        font-size: 0.75rem;
-    }
-
-    .mute-container {
-        bottom: 60px;
-        right: 5px;
     }
 }
