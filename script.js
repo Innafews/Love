@@ -50,6 +50,9 @@ bgm.loop = true;           // 想要循环就加这行，不想要就删掉或�
 let shuffledPoems = [...poems];
 let currentIndex = -1;
 
+const muteBtn = document.getElementById('muteBtn');
+const muteContainer = document.getElementById('muteContainer');
+
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -221,17 +224,6 @@ function updateLoveTime() {
 updateLoveTime();
 setInterval(updateLoveTime, 1000);
 
-// 示例：加一个静音/播放切换按钮
-const muteBtn = document.createElement('button');
-muteBtn.textContent = '🔊';
-muteBtn.style.cssText = 'position:fixed; bottom:80px; right:20px; z-index:10; padding:8px 14px; border-radius:50%; background:rgba(0,0,0,0.4); color:white; border:none; cursor:pointer;';
-document.body.appendChild(muteBtn);
-
-muteBtn.addEventListener('click', () => {
-    bgm.muted = !bgm.muted;
-    muteBtn.textContent = bgm.muted ? '🔇' : '🔊';
-});
-
 // ─────────────── 一键分享 ───────────────
 const shareBtn = document.getElementById('shareBtn');
 const pageTitle = "给最爱的你 - 每天一句心动情话";
@@ -272,3 +264,30 @@ function fallbackShare() {
     // 可选：弹出一个美观的 modal 引导图（需要额外写HTML+CSS）
     // 这里先用 alert 保持简单
 }
+
+// 进入主页面时显示按钮 + 初始化事件
+enterBtn.addEventListener('click', () => {
+    cover.classList.add('hidden');
+
+    bgm.play().catch(err => {
+        console.log("播放失败：", err);
+    });
+
+    setTimeout(() => {
+        main.classList.add('show');
+        shuffledPoems = shuffle([...poems]);
+        currentIndex = -1;
+        showNextPoem();
+        setTimeout(initShapes, 800);
+
+        // ─── 新增：显示静音按钮 ───
+        muteContainer.classList.add('visible');
+
+        // 绑定点击事件（只绑定一次）
+        muteBtn.addEventListener('click', () => {
+            bgm.muted = !bgm.muted;
+            muteBtn.textContent = bgm.muted ? '🔇' : '🔊';
+        });
+
+    }, 1400);
+});
