@@ -250,4 +250,11 @@ enterBtn.addEventListener('click', () => {
         });
 
     }, 1400);
+        // 修改部分（initShapes 内）
+        shape.style.animationDelay = (Math.random() * 15) + 's';
+
+        const colorIdx = Math.floor(Math.random() * colors.length);
+        const x = Math.floor(30 + Math.random() * 40);
+        const y = Math.floor(30 + Math.random() * 40);
+        shape.style.background = `radial-gradient(circle at ${x}% ${y}%, ${colors[colorIdx]}${(opacity + 0.15)} 0%, ${colors[colorIdx]}${(opacity - 0.05)} 60%, transparent 85%)`;
 });
