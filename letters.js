@@ -127,26 +127,18 @@ function showPoem(direction = 'next') {
     }
 
     const poem = shuffledPoems[poemIndex];
-    const html = `
-        <h2 style="margin-bottom:1.2rem; color:#d8bfff; text-shadow:0 4px 16px rgba(0,0,0,0.6);">
-            ${poem.title}
-        </h2>
-        <div style="font-size:0.92rem; opacity:0.85; margin-bottom:1.8rem;">
-            ${poem.date}
-        </div>
-        <div style="white-space: pre-wrap; line-height:1.9;">
-            ${poem.content.replace(/\n/g, '<br>')}
-        </div>
-    `;
 
     const container = document.getElementById('poemArticleText');
-    container.innerHTML = '';
-    container.style.opacity = '0';
+    container.innerHTML = `
+<h2 class="article-title">${poem.title}</h2>
+<div class="article-date">${poem.date}</div>
+<div class="article-content">${poem.content}</div>
+    `.trim();
 
+    container.style.opacity = '0';
     setTimeout(() => {
-        container.innerHTML = html;
         container.style.opacity = '1';
-    }, 300);
+    }, 200);
 }
 
 // ─────────────── 长信 / 文章部分 ───────────────
@@ -221,26 +213,18 @@ function showLetter(direction = 'next') {
     }
 
     const letter = letters[letterIndex];
-    const html = `
-        <h2 style="margin-bottom:1.2rem; color:#d8bfff; text-shadow:0 4px 16px rgba(0,0,0,0.6);">
-            ${letter.title}
-        </h2>
-        <div style="font-size:0.92rem; opacity:0.85; margin-bottom:1.8rem;">
-            ${letter.date}
-        </div>
-        <div style="white-space: pre-wrap; line-height:1.9;">
-            ${letter.content.replace(/\n/g, '<br>')}
-        </div>
-    `;
 
     const container = document.getElementById('articleText');
-    container.innerHTML = '';
-    container.style.opacity = '0';
+    container.innerHTML = `
+<h2 class="article-title">${letter.title}</h2>
+<div class="article-date">${letter.date}</div>
+<div class="article-content">${letter.content}</div>
+    `.trim();
 
+    container.style.opacity = '0';
     setTimeout(() => {
-        container.innerHTML = html;
         container.style.opacity = '1';
-    }, 300);
+    }, 200);
 }
 
 // ─────────────── 网站想对你说的话 ───────────────
