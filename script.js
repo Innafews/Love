@@ -231,3 +231,44 @@ muteBtn.addEventListener('click', () => {
     bgm.muted = !bgm.muted;
     muteBtn.textContent = bgm.muted ? '🔇' : '🔊';
 });
+
+// ─────────────── 一键分享 ───────────────
+const shareBtn = document.getElementById('shareBtn');
+const pageTitle = "给最爱的你 - 每天一句心动情话";
+const pageDescription = "偷偷藏了很多句想对你说的话，点开看看今天的心动属于你吗？";
+const currentUrl = window.location.href;  // 当前页面链接
+const shareImage = "https://images.unsplash.com/photo-1519741497674-2816a88d0a8b?auto=format&fit=crop&q=80&w=1200";  // 建议换成你自己的封面图（宽高比最好1:1或4:5）
+
+shareBtn.addEventListener('click', async () => {
+    // 优先尝试 Web Share API（iOS Safari、Chrome、Edge 等现代浏览器支持）
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: pageTitle,
+                text: pageDescription + "\n" + document.getElementById('poemText').innerText.replace(/<br>/g, '\n'),
+                url: currentUrl,
+                // files: [...]  // 如果想分享图片，需要用户先选择文件，不适合这里
+            });
+            console.log("分享成功");
+        } catch (err) {
+            console.log("分享取消或失败", err);
+            fallbackShare();
+        }
+    } else {
+        fallbackShare();
+    }
+});
+
+function fallbackShare() {
+    // 降级方案：复制链接 + 引导文案
+    const textToCopy = `${pageTitle}\n${pageDescription}\n当前情话：${document.getElementById('poemText').innerText.replace(/<br>/g, '\n')}\n点这里打开：${currentUrl}`;
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        alert("已复制分享文案！\n\n在微信里：\n1. 粘贴给朋友\n2. 或发到朋友圈\n\n小提示：在微信里打开本页面 → 点击右上角「…」→「分享到朋友圈」或「发送给朋友」最美观哦～");
+    }).catch(() => {
+        alert("复制失败，可以长按下面链接手动复制：\n" + currentUrl);
+    });
+
+    // 可选：弹出一个美观的 modal 引导图（需要额外写HTML+CSS）
+    // 这里先用 alert 保持简单
+}

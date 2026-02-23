@@ -286,3 +286,13 @@ h1 {
         font-size: 0.9rem;
     }
 }
+
+.share {
+    background: rgba(120, 200, 255, 0.22); /* 浅蓝紫调，和整体氛围搭 */
+    color: #d0e0ff;
+}
+
+    .share:hover {
+        background: rgba(120, 200, 255, 0.4);
+        transform: translateY(-4px);
+    }
